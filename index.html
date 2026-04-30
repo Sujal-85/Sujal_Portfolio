@@ -576,8 +576,17 @@
           font-size: 13px !important;
           width: 100% !important;
           margin: 0 0 10px 0 !important;
-          display: block !important;
-          border-radius: 10px !important;
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          border-radius: 12px !important;
+        }
+        .hero .text .d-flex .btn {
+          width: calc(50% - 10px) !important;
+          margin: 5px !important;
+          font-size: 12px !important;
+          padding: 12px 10px !important;
+          white-space: nowrap;
         }
         .ftco-section {
           padding: 30px 0 !important;
@@ -806,7 +815,7 @@
           max-height: 60vh;
           height: auto !important;
           align-items: flex-end !important;
-          padding-top: 0 !important;
+          padding-top: 80px !important; /* Added space for navbar */
           margin-top: 0 !important;
         }
         .hero [class*="col-"][class*="order-md-last"] img {
@@ -890,7 +899,7 @@
 	          		<span class="subheading" style="color: #ffbd39; font-weight: 800; letter-spacing: 6px; text-transform: uppercase; display: block; margin-bottom: 20px; opacity: 0.8;">Full Stack Craftsman</span>
 		            <h1 class="mb-4" style="font-size: 72px; line-height: 1; font-weight: 900; letter-spacing: -2px;">Hello, I'm <br><span style="background: linear-gradient(135deg, #ffbd39 0%, #ff9f1a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Sujal Khedekar</span></h1>
 		            <h2 class="mb-5" style="font-size: 28px; color: rgba(255,255,255,0.8); font-weight: 500;">Creative <span id="typed-text" style="color: #ffbd39; font-weight: 700;"></span></h2>
-		            <div class="d-flex flex-wrap">
+		            <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
                   <a href="#contact-section" class="btn btn-primary py-3 px-5 mr-3 mb-3">Let's Connect</a> 
                   <a href="projects.html" class="btn btn-outline-white py-3 px-5 mb-3">Explore Work</a>
                 </div>
