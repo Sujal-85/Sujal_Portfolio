@@ -1699,7 +1699,19 @@
   
   <script src="js/main.js"></script>
 
+  <!-- EmailJS SDK for contact form (works on GitHub Pages - no backend needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <script>
+    // Initialize EmailJS with your Public Key
+    // SETUP: Replace with your own keys from https://www.emailjs.com/
+    // Service ID: your Gmail service
+    // Template ID: your email template
+    // Public Key: your account public key
+    (function(){
+      emailjs.init({ publicKey: 'YOUR_EMAILJS_PUBLIC_KEY' });
+    })();
+
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -1707,37 +1719,25 @@
       const formStatus = document.getElementById('formStatus');
       const originalBtnValue = submitBtn.value;
       
-      // Basic UI feedback
       submitBtn.value = 'Sending...';
       submitBtn.disabled = true;
       formStatus.style.display = 'none';
-      
-      const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
+
+      const templateParams = {
+        from_name:  document.getElementById('name').value,
+        from_email: document.getElementById('email').value,
+        subject:    document.getElementById('subject').value,
+        message:    document.getElementById('message').value,
+        to_email:   'khedekarsujay720@gmail.com'
       };
 
       try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          formStatus.innerHTML = `<div class="alert alert-success">Message sent successfully!</div>`;
-          document.getElementById('contactForm').reset();
-        } else {
-          formStatus.innerHTML = `<div class="alert alert-danger">Error: ${data.message || 'Something went wrong.'}</div>`;
-        }
+        await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+        formStatus.innerHTML = `<div class="alert alert-success">✅ Message sent successfully! I'll get back to you soon.</div>`;
+        document.getElementById('contactForm').reset();
       } catch (error) {
-        formStatus.innerHTML = `<div class="alert alert-danger">Error connecting to the server. Please try again later.</div>`;
+        console.error('EmailJS error:', error);
+        formStatus.innerHTML = `<div class="alert alert-danger">❌ Failed to send. Please email me directly at <a href="mailto:khedekarsujay720@gmail.com">khedekarsujay720@gmail.com</a></div>`;
       } finally {
         formStatus.style.display = 'block';
         submitBtn.value = originalBtnValue;
