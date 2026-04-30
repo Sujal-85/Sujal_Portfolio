@@ -175,6 +175,39 @@
         padding-top: 0 !important;
       }
 
+      /* Global Spacing Reductions */
+      .ftco-section {
+        padding: 60px 0 !important; /* Reduced from 7em */
+      }
+
+      @media (max-width: 767.98px) {
+        .ftco-section {
+          padding: 40px 0 !important;
+        }
+        .hero .slider-text {
+          min-height: auto !important;
+          padding-top: 80px !important; /* Space for fixed navbar */
+          padding-bottom: 40px !important;
+        }
+        .hero .slider-text .col-md-6 {
+          min-height: auto !important;
+        }
+        .hero .slider-text img {
+          max-height: 40vh !important;
+          margin-top: -20px !important;
+          margin-bottom: 20px !important;
+        }
+        .hero .slider-text .text {
+          text-align: center !important;
+        }
+        .hero .slider-text .text h1 {
+          font-size: 40px !important;
+        }
+        .hero .slider-text .text h2 {
+          font-size: 20px !important;
+        }
+      }
+
       /* Standardized Premium Button Styling */
       .btn-primary, .btn {
         background: linear-gradient(135deg, #ffbd39 0%, #ff9f1a 100%) !important;
@@ -1483,11 +1516,10 @@
 			</div>
 		</section>
 
-    <section class="ftco-section" id="tech-section">
+    <section class="ftco-section" id="tech-section" style="padding-bottom: 20px !important;">
       <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
+        <div class="row justify-content-center mb-4">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Skills</h1>
             <h2 class="mb-4">Tech Stack</h2>
             <p>Empowering businesses with modern technologies and scalable solutions.</p>
           </div>
@@ -1579,13 +1611,12 @@
       </div>
     </section>
 
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+    <section class="ftco-section contact-section ftco-no-pb" id="contact-section" style="padding-top: 40px !important;">
       <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
+      	<div class="row justify-content-center mb-4">
           <div class="col-md-7 heading-section text-center">
-            <h1 class="big big-2">Contact</h1>
             <h2 class="mb-4">Contact Me</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
           </div>
         </div>
 
