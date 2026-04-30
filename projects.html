@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sujal Khedekar - Projects Gallery</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- GSAP & Lenis for Advanced Animations -->
+    <style>
+      #custom-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+      .loader-content {
+        text-align: center;
+      }
+      .loader-text {
+        color: #ffbd39;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        margin-top: 20px;
+        opacity: 0;
+      }
+      .loader-circle {
+        width: 100px;
+        height: 100px;
+        border: 3px solid transparent;
+        border-top-color: #ffbd39;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      html.lenis {
+        height: auto;
+      }
+      .lenis-smooth {
+        scroll-behavior: auto !important;
+      }
+      .lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
+      .lenis-stopped {
+        overflow: hidden;
+      }
+      
+      /* Tech Stack Slider */
+      .tech-icon-item {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease;
+      }
+      .tech-icon-item img {
+        width: 140px !important;
+        height: 140px !important;
+        object-fit: contain;
+        filter: grayscale(100%) brightness(0.8);
+        opacity: 0.5;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        margin: 0 auto !important;
+      }
+      .tech-icon-item:hover img {
+        filter: grayscale(0%) brightness(1.1);
+        opacity: 1;
+        transform: scale(1.2) translateY(-10px);
+      }
+
+      /* Projects Layout */
+      .project-zigzag {
+        padding: 80px 0;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      @media (min-width: 768px) {
+        .project-zigzag:nth-child(even) .row {
+          flex-direction: row-reverse;
+        }
+      }
+
+      .project-img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #0d0d0d !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        overflow: hidden;
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        transition: all 0.4s ease;
+        position: relative;
+        padding: 0;
+      }
+      
+      .project-img:hover {
+        box-shadow: 0 30px 60px rgba(255, 189, 57, 0.15);
+      }
+
+      .project-img a, .carousel-item a {
+        display: flex !important;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+
+      .project-img img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain;
+        transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .project-img:hover img {
+        transform: scale(1.05);
+      }
+      
+      /* Carousel Fixes */
+      .carousel, .carousel-inner, .carousel-item {
+        width: 100%;
+        height: 100%;
+        background: transparent !important;
+      }
+      .carousel-item {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      
+      .project-info {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .category-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        background: rgba(255, 189, 57, 0.1);
+        color: #ffbd39;
+        border: 1px solid rgba(255, 189, 57, 0.3);
+        border-radius: 50px;
+        font-size: 11px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        width: fit-content;
+      }
+
+      .filter-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.6);
+        padding: 12px 28px;
+        margin: 6px;
+        border-radius: 50px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+      }
+      .filter-btn.active, .filter-btn:hover {
+        background: #ffbd39;
+        border-color: #ffbd39;
+        color: #000;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 189, 57, 0.3);
+      }
+
+      .project-card {
+        display: none;
+      }
+      .project-card.show {
+        display: block;
+      }
+
+      /* Premium Buttons */
+      .btn-primary, .live-preview-btn {
+        background: linear-gradient(135deg, #ffbd39 0%, #ff9f1a 100%) !important;
+        border: none !important;
+        color: #000 !important;
+        font-weight: 800 !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 16px 35px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 10px 25px rgba(255, 189, 57, 0.3) !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        display: inline-block;
+      }
+      .btn-primary:hover, .live-preview-btn:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 15px 35px rgba(255, 189, 57, 0.5) !important;
+      }
+
+      .btn-outline-white {
+        background: transparent !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        color: #fff !important;
+        padding: 16px 35px !important;
+        border-radius: 50px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease !important;
+      }
+      .btn-outline-white:hover {
+        background: #fff !important;
+        color: #000 !important;
+        border-color: #fff !important;
+        transform: translateY(-5px) !important;
+      }
+
+      .badge-primary {
+        background: rgba(255, 189, 57, 0.05) !important;
+        color: #ffbd39 !important;
+        border: 1px solid rgba(255, 189, 57, 0.2) !important;
+        padding: 8px 15px !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        font-size: 11px !important;
+        margin: 4px !important;
+        backdrop-filter: blur(5px);
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 767.98px) {
+        .hero-wrap.js-fullheight {
+          height: 45vh !important;
+          min-height: 350px !important;
+        }
+        .hero-wrap .slider-text {
+          height: 45vh !important;
+        }
+        .project-zigzag {
+          padding: 40px 15px !important;
+        }
+        .project-img {
+          aspect-ratio: 4/3;
+          margin-bottom: 30px !important;
+          border-radius: 20px;
+        }
+        .project-info {
+          padding: 0 !important;
+          text-align: left !important;
+        }
+        .project-info h2 {
+          font-size: 28px !important;
+          text-align: left !important;
+          margin-bottom: 15px !important;
+        }
+        .project-info p {
+          text-align: left !important;
+          padding: 0 !important;
+          font-size: 15px !important;
+          line-height: 1.6;
+        }
+        .tech-stack {
+          text-align: left !important;
+        }
+        .live-preview-btn, .btn-outline-white {
+          width: 100% !important;
+          margin: 10px 0 !important;
+          text-align: center !important;
+          display: block !important;
+        }
+        /* Tap indicator for mobile */
+        .project-img::after {
+          content: '🔍 Tap to Expand';
+          position: absolute;
+          bottom: 15px;
+          right: 15px;
+          background: rgba(255, 189, 57, 0.9);
+          color: #000;
+          font-size: 10px;
+          font-weight: 800;
+          padding: 5px 12px;
+          border-radius: 50px;
+          text-transform: uppercase;
+        }
+      }
+
+      /* Social Sidebar */
+      .social-sidebar {
+        position: fixed;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .social-sidebar a {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 189, 57, 0.3);
+        backdrop-filter: blur(15px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffbd39;
+        font-size: 22px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+      }
+      .social-sidebar a:hover {
+        background: #ffbd39;
+        color: #000;
+        transform: scale(1.15) translateX(-5px);
+      }
+      @media (max-width: 767.98px) {
+        .social-sidebar {
+          right: 15px;
+        }
+        .social-sidebar a {
+          width: 45px;
+          height: 45px;
+          font-size: 20px;
+        }
+      }
+    </style>
+
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    
+    <div id="custom-loader">
+      <div class="loader-content">
+        <div class="loader-circle"></div>
+        <div class="loader-text">SUJAL</div>
+      </div>
+    </div>
+	  
+	  
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">Sujal<span>.</span></a>
+	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav nav ml-auto">
+	          <li class="nav-item"><a href="index.html#home-section" class="nav-link"><span>Home</span></a></li>
+	          <li class="nav-item"><a href="index.html#about-section" class="nav-link"><span>About</span></a></li>
+	          <li class="nav-item"><a href="projects.html" class="nav-link"><span>Projects</span></a></li>
+	          <li class="nav-item"><a href="index.html#contact-section" class="nav-link"><span>Contact</span></a></li>
+	          <li class="nav-item ml-lg-3"><a href="Sujal_Resume.pdf" download="Sujal_Khedekar_Resume.pdf" class="btn btn-primary py-2 px-3">Download CV</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+
+    <section class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+          <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
+            <h1 class="mb-3 bread">Projects Gallery</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Projects <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tech-slider-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tech-carousel owl-carousel">
+              <div class="tech-icon-item"><img src="images/icons/react.png" alt="React"></div>
+              <div class="tech-icon-item"><img src="images/icons/next.png" alt="Next.js"></div>
+              <div class="tech-icon-item"><img src="images/icons/node.png" alt="Node.js"></div>
+              <div class="tech-icon-item"><img src="images/icons/mongodb.png" alt="MongoDB"></div>
+              <div class="tech-icon-item"><img src="images/icons/mysql.png" alt="MySQL"></div>
+              <div class="tech-icon-item"><img src="images/icons/firebase.png" alt="Firebase"></div>
+              <div class="tech-icon-item"><img src="images/icons/flask.png" alt="Flask"></div>
+              <div class="tech-icon-item"><img src="images/icons/git.png" alt="Git"></div>
+              <div class="tech-icon-item"><img src="images/icons/github.png" alt="GitHub"></div>
+              <div class="tech-icon-item"><img src="images/icons/docker.png" alt="Docker"></div>
+              <div class="tech-icon-item"><img src="images/icons/npm.png" alt="NPM"></div>
+              <div class="tech-icon-item"><img src="images/icons/Google.png" alt="Google"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section">
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 text-center filter-btns">
+            <button class="filter-btn active" onclick="filterSelection('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterSelection('android')">Android (Flutter)</button>
+            <button class="filter-btn" onclick="filterSelection('fullstack')">Full Stack (Python & Next.js)</button>
+            <button class="filter-btn" onclick="filterSelection('automation')">Automation (n8n)</button>
+            <button class="filter-btn" onclick="filterSelection('websites')">Websites (React & Static)</button>
+          </div>
+        </div>
+
+        <div id="project-container">
+          <!-- Project 1: Prasanna Caterers App -->
+          <div class="project-zigzag project-card android fullstack show ftco-animate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="project-img mb-4">
+                  <a href="images/projects/prasanna.jpg" class="image-popup">
+                    <img src="images/projects/prasanna.jpg" alt="Prasanna Caterers">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 project-info text-center">
+                <span class="category-badge">Sponsored College Project</span>
+                <h2 style="font-size: 40px; font-weight: 800;">Prasanna Caterers App</h2>
+                <p class="px-md-5">Digitized mess operations — meal booking, billing, and payments. Built with Flutter and Firebase, this system successfully reduced manual workload by 60% for mess administrators.</p>
+                <div class="tech-stack mb-4">
+                  <span class="badge badge-primary">Flutter</span>
+                  <span class="badge badge-primary">Firebase</span>
+                  <span class="badge badge-primary">UPI</span>
+                  <span class="badge badge-primary">MongoDB</span>
+                  <span class="badge badge-primary">Cloud Functions</span>
+                </div>
+                <div class="d-flex justify-content-center flex-wrap">
+                  <a href="https://play.google.com/store/apps/details?id=com.finolex.mess" target="_blank" class="live-preview-btn px-5 py-3 mr-3 mb-2">Play Store</a>
+                  <a href="https://github.com/Sujal-85/finolex-mess" target="_blank" class="btn btn-outline-white px-5 py-3 mb-2">GitHub Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Ratnagreen Techno Services App -->
+          <div class="project-zigzag project-card android automation fullstack show ftco-animate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="project-img mb-4">
+                  <a href="images/projects/ratnagreen.jpg" class="image-popup">
+                    <img src="images/projects/ratnagreen.jpg" alt="Ratnagreen">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 project-info text-center">
+                <span class="category-badge">Freelancing Project & n8n</span>
+                <h2 style="font-size: 40px; font-weight: 800;">Ratnagreen Techno Services</h2>
+                <p class="px-md-5">Digitized organic waste management (Compost/Biogas). Integrated <strong>WhatsApp Business API</strong> for real-time updates using <strong>n8n workflows</strong> and Firebase backend for automated service notifications.</p>
+                <div class="tech-stack mb-4">
+                  <span class="badge badge-primary">Flutter</span>
+                  <span class="badge badge-primary">Firebase</span>
+                  <span class="badge badge-primary">n8n Automation</span>
+                  <span class="badge badge-primary">WhatsApp API</span>
+                  <span class="badge badge-primary">Google Cloud</span>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <a href="https://play.google.com/store/apps/details?id=com.ratnagreen.business" target="_blank" class="live-preview-btn px-5 py-3">Play Store</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: WebTestPro -->
+          <div class="project-zigzag project-card fullstack automation show ftco-animate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="project-img mb-4">
+                  <a href="images/projects/webtestpro/Screenshot 2026-04-07 214628.png" class="image-popup">
+                    <img src="images/projects/webtestpro/Screenshot 2026-04-07 214628.png" alt="WebTestPro Dashboard">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 project-info text-center">
+                <span class="category-badge">Full-Stack AI & n8n Automation</span>
+                <h2 style="font-size: 40px; font-weight: 800;">WebTestPro Platform</h2>
+                <p class="px-md-5">A premium <strong>Full-Stack</strong> automated web testing platform powered by <strong>Python AI Agents</strong> and <strong>n8n</strong> orchestration. Features intelligent automated testing, real-time reporting, and seamless integration with CI/CD pipelines.</p>
+                <div class="tech-stack mb-4">
+                  <span class="badge badge-primary"><i class="icon-code mr-1"></i>Next.js</span>
+                  <span class="badge badge-primary"><i class="icon-robot mr-1"></i>Python AI Agents</span>
+                  <span class="badge badge-primary"><i class="icon-gears mr-1"></i>n8n Automation</span>
+                  <span class="badge badge-primary"><i class="icon-check mr-1"></i>Playwright</span>
+                  <span class="badge badge-primary"><i class="icon-docker mr-1"></i>Docker</span>
+                  <span class="badge badge-primary"><i class="icon-cloud mr-1"></i>AWS/GCP</span>
+                </div>
+                <div class="d-flex justify-content-center flex-wrap">
+                  <a href="https://webtestpro.vercel.app" target="_blank" class="live-preview-btn px-5 py-3 mr-3 mb-2">Live Demo</a>
+                  <a href="https://github.com/Sujal-85/WebTestPro" target="_blank" class="btn btn-outline-white px-5 py-3 mb-2">GitHub Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: FlowLink -->
+          <div class="project-zigzag project-card android fullstack show ftco-animate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="project-img mb-4">
+                  <a href="images/projects/flowlink.jpg" class="image-popup">
+                    <img src="images/projects/flowlink.jpg" alt="FlowLink">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 project-info text-center">
+                <span class="category-badge">Final Year Major Project</span>
+                <h2 style="font-size: 40px; font-weight: 800;">FlowLink Order Management</h2>
+                <p class="px-md-5">A comprehensive dual-app ecosystem for Customer and Retailer management. Features a robust multi-sector role-based system for Customers, Retailers, and Wholesalers with real-time tracking via Socket.io.</p>
+                <div class="tech-stack mb-4">
+                  <span class="badge badge-primary mr-1"><i class="icon-mobile mr-1"></i>Flutter</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-terminal mr-1"></i>Node.js</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-refresh mr-1"></i>Socket.io</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-google mr-1"></i>Firebase</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-lock mr-1"></i>JWT</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-cloud mr-1"></i>Google Cloud</span>
+                </div>
+                <div class="d-flex justify-content-center flex-wrap">
+                  <a href="https://github.com/Sujal-85/Flowlink" target="_blank" class="live-preview-btn px-5 py-3 mb-2">GitHub Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Amrapali WhatsApp Automation -->
+          <div class="project-zigzag project-card automation show ftco-animate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="project-img mb-4">
+                  <a href="images/projects/n8n/amrapali.png" class="image-popup">
+                    <img src="images/projects/n8n/amrapali.png" alt="Amrapali Automation">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 project-info text-center">
+                <span class="category-badge">Business Automation & n8n</span>
+                <h2 style="font-size: 40px; font-weight: 800;">Amrapali WhatsApp Automation</h2>
+                <p class="px-md-5">Developed a comprehensive WhatsApp-based business automation system using <strong>n8n</strong> to handle end-to-end customer interactions including booking, payment processing, and feedback collection. This workflow intelligently processes messages, validates data, and routes requests dynamically.</p>
+                <div class="tech-stack mb-4">
+                  <span class="badge badge-primary mr-1"><i class="icon-gears mr-1"></i>n8n Automation</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-whatsapp mr-1"></i>WhatsApp API</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-table mr-1"></i>Google Sheets</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-code mr-1"></i>JavaScript</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-line-chart mr-1"></i>Workflow Optimization</span>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <a href="#" class="live-preview-btn px-5 py-3">Explore Workflow</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Amrapali Static Website -->
+          <div class="project-zigzag project-card websites show ftco-animate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="project-img mb-4">
+                  <a href="images/projects/amrapali-static/Screenshot 2026-04-28 235136.png" class="image-popup">
+                    <img src="images/projects/amrapali-static/Screenshot 2026-04-28 235136.png" alt="Amrapali Home">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 project-info text-center">
+                <span class="category-badge">Static Website</span>
+                <h2 style="font-size: 40px; font-weight: 800;">Amrapali Brand Website</h2>
+                <p class="px-md-5">A premium, responsive static website for Amrapali, featuring elegant design and smooth navigation to showcase the brand's services and portfolio. Optimized for speed and professional aesthetic.</p>
+                <div class="tech-stack mb-4">
+                  <span class="badge badge-primary mr-1"><i class="icon-html5 mr-1"></i>HTML5</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-css3 mr-1"></i>CSS3</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-code mr-1"></i>JavaScript</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-bootstrap mr-1"></i>Bootstrap</span>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <a href="https://www.amrapalihomestay.in/" target="_blank" class="live-preview-btn px-5 py-3">View Site</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 7: Ratnagreen Website -->
+          <div class="project-zigzag project-card websites show ftco-animate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="project-img mb-4">
+                  <a href="images/projects/ratnagreen-static/Screenshot 2026-04-28 235345.png" class="image-popup">
+                    <img src="images/projects/ratnagreen-static/Screenshot 2026-04-28 235345.png" alt="Ratnagreen Home">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 project-info text-center">
+                <span class="category-badge">Corporate Website</span>
+                <h2 style="font-size: 40px; font-weight: 800;">Ratnagreen Official Website</h2>
+                <p class="px-md-5">Official landing page for Ratnagreen Techno Services. Developed with modern web standards to showcase sustainable waste management solutions through a clean, corporate-ready interface.</p>
+                <div class="tech-stack mb-4">
+                  <span class="badge badge-primary mr-1"><i class="icon-html5 mr-1"></i>HTML5</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-css3 mr-1"></i>CSS3</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-flash mr-1"></i>GSAP</span>
+                  <span class="badge badge-primary mr-1"><i class="icon-desktop mr-1"></i>Responsive Design</span>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <a href="https://www.ratnagreen.in/" target="_blank" class="live-preview-btn px-5 py-3">View Site</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- <section class="ftco-section" id="tech-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h1 class="big big-2">Skills</h1>
+            <h2 class="mb-4">Tech Stack</h2>
+            <p>Empowering businesses with modern technologies and scalable solutions.</p>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="tech-carousel owl-carousel">
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/react.png" class="img-fluid" alt="React">
+                  <span>React</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/next.png" class="img-fluid" alt="Next.js">
+                  <span>Next.js</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/node.png" class="img-fluid" alt="Node.js">
+                  <span>Node.js</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/mongodb.png" class="img-fluid" alt="MongoDB">
+                  <span>MongoDB</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/firebase.png" class="img-fluid" alt="Firebase">
+                  <span>Firebase</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/docker.png" class="img-fluid" alt="Docker">
+                  <span>Docker</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/git.png" class="img-fluid" alt="Git">
+                  <span>Git</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/github.png" class="img-fluid" alt="GitHub">
+                  <span>GitHub</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/Google.png" class="img-fluid" alt="Google Cloud">
+                  <span>GCP</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/mysql.png" class="img-fluid" alt="MySQL">
+                  <span>MySQL</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/flask.png" class="img-fluid" alt="Flask">
+                  <span>Flask</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="tech-icon-item text-center">
+                  <img src="images/icons/npm.png" class="img-fluid" alt="NPM">
+                  <span>NPM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <footer class="ftco-footer ftco-section">
+      <div class="container text-center">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-md-12">
+            <div class="ftco-footer-widget">
+              <ul class="ftco-footer-social list-unstyled mt-3">
+                <li class="ftco-animate"><a href="https://play.google.com/store/apps/dev?id=7016254060856930064" target="_blank" title="Play Store Developer"><span class="icon-android"></span></a></li>
+                <li class="ftco-animate"><a href="https://github.com/Sujal-85" target="_blank"><span class="icon-github"></span></a></li>
+                <li class="ftco-animate"><a href="https://gitlab.com/khedekarsujay720" target="_blank"><span class="icon-gitlab"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.linkedin.com/in/sujal-khedekar/" target="_blank"><span class="icon-linkedin"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p>&copy;<script>document.write(new Date().getFullYear());</script> Sujal Khedekar. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    
+    <script src="js/main.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <script>
+      // Initialize Lenis Smooth Scroll
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true
+      });
+
+      // Sync ScrollTrigger with Lenis
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      // Preloader Animation
+      window.addEventListener('load', () => {
+        const loaderText = document.querySelector('.loader-text');
+        const text = loaderText.textContent;
+        loaderText.textContent = '';
+        text.split('').forEach(char => {
+          const span = document.createElement('span');
+          span.textContent = char;
+          span.style.opacity = '0';
+          span.style.display = 'inline-block';
+          loaderText.appendChild(span);
+        });
+
+        const tl = gsap.timeline();
+        tl.to('.loader-text span', { opacity: 1, y: -10, stagger: 0.1, duration: 0.5, ease: "back.out" })
+          .to('#custom-loader', { 
+            clipPath: 'circle(0% at 50% 50%)', 
+            duration: 1.5, 
+            delay: 0.5, 
+            ease: "power4.inOut",
+            onComplete: () => {
+              document.getElementById('custom-loader').style.display = 'none';
+            }
+          });
+      });
+
+      // 3D Scroll Animations
+      gsap.registerPlugin(ScrollTrigger);
+      // Project entry animations
+      gsap.utils.toArray('.project-card').forEach(card => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%", // Consistent with index.html
+            toggleActions: "play none none none",
+            once: true
+          },
+          opacity: 0,
+          scale: 0.8,
+          rotationY: 20,
+          z: -150,
+          duration: 1.5,
+          ease: "expo.out"
+        });
+      });
+
+      // Smooth Breadcrumb reveal
+      gsap.from(".bread", {
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power4.out"
+      });
+
+    </script>
+
+    <script>
+      function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("project-card");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+          removeClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+        }
+        
+        // Update active button
+        var btns = document.getElementsByClassName("filter-btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].classList.remove("active");
+          // Match the specific category string in the onclick attribute
+          if (btns[i].getAttribute("onclick").includes("'" + (c || 'all') + "'")) {
+            btns[i].classList.add("active");
+          }
+        }
+      }
+
+      function addClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {
+            element.className += " " + arr2[i];
+          }
+        }
+      }
+
+      function removeClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+      // Refresh ScrollTrigger on load
+      window.addEventListener('load', () => {
+        ScrollTrigger.refresh();
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 1000);
+      });
+
+      window.addEventListener('resize', () => {
+        ScrollTrigger.refresh();
+      });
+
+      // Tech Carousel Initialization
+      $('.tech-carousel').owlCarousel({
+        loop: true,
+        margin: 30,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 1500,
+        autoplayHoverPause: true,
+        smartSpeed: 1000,
+        responsive: {
+          0: { items: 3 },
+          600: { items: 5 },
+          1000: { items: 8 }
+        }
+      });
+    </script>
+
+    
+    <!-- Social Sidebar -->
+    <div class="social-sidebar ftco-animate">
+      <a href="https://wa.me/919359742537" target="_blank" data-label="WhatsApp">
+        <span class="icon-whatsapp"></span>
+      </a>
+      <a href="https://play.google.com/store/apps/dev?id=7016254060856930064" target="_blank" data-label="Play Store">
+        <span class="icon-android"></span>
+      </a>
+      <a href="https://github.com/Sujal-85" target="_blank" data-label="GitHub">
+        <span class="icon-github"></span>
+      </a>
+      <a href="https://gitlab.com/khedekarsujay720" target="_blank" data-label="GitLab">
+        <span class="icon-gitlab"></span>
+      </a>
+      <a href="https://www.linkedin.com/in/sujal-khedekar/" target="_blank" data-label="LinkedIn">
+        <span class="icon-linkedin"></span>
+      </a>
+    </div>
+  </body>
+</html>
