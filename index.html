@@ -1801,7 +1801,7 @@
     // Template ID: your email template
     // Public Key: your account public key
     (function(){
-      emailjs.init({ publicKey: 'YOUR_EMAILJS_PUBLIC_KEY' });
+      emailjs.init({ publicKey: 'SJffOjr6XEwP6yeyX' });
     })();
 
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
@@ -1816,15 +1816,15 @@
       formStatus.style.display = 'none';
 
       const templateParams = {
+        to_name:    'Sujal',
         from_name:  document.getElementById('name').value,
         from_email: document.getElementById('email').value,
         subject:    document.getElementById('subject').value,
-        message:    document.getElementById('message').value,
-        to_email:   'khedekarsujay720@gmail.com'
+        message:    document.getElementById('message').value
       };
 
       try {
-        await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+        await emailjs.send('service_mkn9nin', 'template_rn3sodg', templateParams);
         formStatus.innerHTML = `<div class="alert alert-success">✅ Message sent successfully! I'll get back to you soon.</div>`;
         document.getElementById('contactForm').reset();
       } catch (error) {
