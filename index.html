@@ -365,6 +365,68 @@
         color: #ffbd39 !important;
       }
 
+      /* Modern Resume Styling */
+      .resume-wrap {
+        background: rgba(255, 255, 255, 0.03) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-radius: 20px !important;
+        padding: 40px !important;
+        margin-bottom: 30px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+      }
+      .resume-wrap:hover {
+        transform: translateY(-10px) scale(1.02);
+        background: rgba(255, 255, 255, 0.06) !important;
+        border-color: rgba(255, 189, 57, 0.3) !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      }
+      .resume-wrap::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(to bottom, #ffbd39, #ff9f1a);
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+      }
+      .resume-wrap:hover::before {
+        opacity: 1;
+      }
+      .resume-wrap .date {
+        font-weight: 800 !important;
+        font-size: 20px !important;
+        color: #ffbd39 !important;
+        display: block;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+      .resume-wrap h2 {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        margin-bottom: 5px !important;
+      }
+      .resume-wrap .position {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: block;
+        margin-bottom: 15px;
+      }
+      .resume-wrap p {
+        font-size: 15px !important;
+        line-height: 1.7 !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+
       /* Mobile Responsiveness Fixes */
       @media (max-width: 767.98px) {
         .container {
