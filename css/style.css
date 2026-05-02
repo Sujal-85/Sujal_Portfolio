@@ -9408,6 +9408,31 @@ textarea.form-control {
     font-weight: 500;
     text-transform: uppercase; }
 
+@media (max-width: 767.98px) {
+  .contact-section .box {
+    padding: 10px 5px !important;
+  }
+  .contact-section .box .icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin-bottom: 10px !important;
+  }
+  .contact-section .box .icon span {
+    font-size: 18px !important;
+  }
+  .contact-section .box h3 {
+    font-size: 9px !important;
+    margin-bottom: 5px !important;
+  }
+  .contact-section .box p {
+    font-size: 8px !important;
+    margin-bottom: 0 !important;
+  }
+  .contact-section .box p a {
+    font-size: 8px !important;
+  }
+}
+
 .contact-section .contact-form {
   width: 100%; }
 
